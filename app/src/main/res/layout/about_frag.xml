@@ -18,4 +18,12 @@
         android:text="Developed by 090"
         android:layout_below="@id/textViewStates"
         android:textSize="30sp" />
+    <TextView
+        android:id="@+id/textViewSources"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Data source: Rootnet's Covid19 API"
+        android:layout_below="@id/textViewFFS"
+        android:textSize="30sp" />
 </RelativeLayout>
