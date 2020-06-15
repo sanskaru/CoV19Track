@@ -4,26 +4,26 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textViewStates"
+        android:id="@+id/apptitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="@string/app_name"
-        android:textSize="30sp" />
+        android:textSize="25sp" />
     <TextView
-        android:id="@+id/textViewFFS"
+        android:id="@+id/devs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="Developed by 090"
-        android:layout_below="@id/textViewStates"
-        android:textSize="30sp" />
+        android:text="@string/devs"
+        android:layout_below="@id/apptitle"
+        android:textSize="25sp" />
     <TextView
-        android:id="@+id/textViewSources"
+        android:id="@+id/sources"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="Data source: Rootnet's Covid19 API"
-        android:layout_below="@id/textViewFFS"
-        android:textSize="30sp" />
+        android:text="@string/sources"
+        android:layout_below="@id/devs"
+        android:textSize="25sp" />
 </RelativeLayout>

@@ -30,14 +30,16 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
+import static java.security.AccessController.getContext;
 import static java.util.Arrays.asList;
 
 public class MainActivity extends AppCompatActivity {
 
-    ListView listView;
+   static ListView listView;
 //    static TextView textView;
     TextView confirmed_cases, active_cases, death_s, recovered_cases;
     Fragment fragment;
+    public static ArrayAdapter<String> stringArrayAdapter;
     public void AddToList(JSONArray array)
     {
 
@@ -69,9 +71,10 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, list);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, list);
+        stringArrayAdapter = adapter;
+       listView.setAdapter(adapter);
 
-        listView.setAdapter(adapter);
     }
 
     public class CallToAPI extends AsyncTask<String, Void, String>
