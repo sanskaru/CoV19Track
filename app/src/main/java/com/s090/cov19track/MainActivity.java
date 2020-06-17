@@ -48,10 +48,6 @@ public class MainActivity extends AppCompatActivity {
     public static String[] totalConfirmed = new String[35], loc = new String[35], discharged = new String[35], deaths = new String[35];
     public void AddToList(JSONArray array)
     {
-
-      //  listView = (ListView) findViewById(R.id.listView);
-        LinearLayout statesView = (LinearLayout) findViewById(R.id.statesView);
-        ArrayList<String> list = new ArrayList<String>();
         int id=Integer.MIN_VALUE;
 
         for(int i=0;i<array.length();i++)
@@ -66,8 +62,6 @@ public class MainActivity extends AppCompatActivity {
                 discharged[i] = state.getString("discharged");
                 deaths[i] = state.getString("deaths");
 
-
-
             }
 
             catch (JSONException e)
@@ -81,9 +75,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, list);
-        stringArrayAdapter = adapter;
-   //    listView.setAdapter(adapter);
+
 
     }
 
@@ -129,12 +121,8 @@ public class MainActivity extends AppCompatActivity {
 
                 JSONObject data = apiContent.getJSONObject("data");
 
-        //        Log.i("Data Object", data.toString());
-
                 String unofficial = data.getString("unofficial-summary");
                 JSONArray unoffArray = data.getJSONArray("unofficial-summary");
-
-         //       Log.i("Unofficial Summary", unoffArray.getString(0));
 
                 JSONObject unoffObject = unoffArray.getJSONObject(0);
 
@@ -146,25 +134,18 @@ public class MainActivity extends AppCompatActivity {
                 String total = unoffObject.getString("total"), recovered = unoffObject.getString("recovered"), active = unoffObject.getString("active"), deaths = unoffObject.getString("deaths");
 
                 confirmed_cases.setText(total);
-             //   confirmed_cases.setTextColor(Color.RED);
 
                 recovered_cases.setText(recovered);
-            //    recovered_cases.setTextColor(Color.GREEN);
 
                 active_cases.setText(active);
-            //    active_cases.setTextColor(Color.YELLOW);
 
                 death_s.setText(deaths);
-            //    death_s.setTextColor(Color.DKGRAY);
 
                 JSONArray regional = data.getJSONArray("regional"); // sorry for the extremely cluttered code, but that's how the JSON file is.
-
-        //        Log.i("Regional", regional.toString());
 
                 AddToList(regional);
 
                 // regional array contains statewise data in alphabetical order
-
 
             }
 

@@ -34,9 +34,7 @@ public class StatesFragment extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
         View myView = inflater.inflate(R.layout.states_frag, container, false);
-  //      ArrayList<String> strings = new ArrayList<String>(asList("1","2"));
- //       ArrayAdapter<String> adapter = stringArrayAdapter;
-//        ((ListView) myView.findViewById(R.id.listView)).setAdapter(adapter);
+
 
         LinearLayout statesView = ((LinearLayout) myView.findViewById(R.id.statesView));
         LayoutInflater layoutInflater = LayoutInflater.from(statesView.getContext());
