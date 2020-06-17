@@ -18,9 +18,13 @@ public class AboutFragment extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.about_frag, container, false);
 
+        view.findViewById(R.id.abouttt).setTranslationY(2000);
+
         ((TextView) view.findViewById(R.id.apptitle)).setMovementMethod(LinkMovementMethod.getInstance());
         ((TextView) view.findViewById(R.id.devs)).setMovementMethod(LinkMovementMethod.getInstance());
         ((TextView) view.findViewById(R.id.sources)).setMovementMethod(LinkMovementMethod.getInstance());
+
+        view.findViewById(R.id.abouttt).animate().translationYBy(-2000).alpha(1f).setDuration(500);
 
 
         return view;

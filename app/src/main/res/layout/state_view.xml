@@ -8,14 +8,15 @@
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
     card_view:cardBackgroundColor="#506c64"
-
+    android:id="@+id/carrddd"
     card_view:cardCornerRadius="8dp"
 
     card_view:cardElevation="8dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:id="@+id/rl">
 
         <TextView
             android:id="@+id/card_total"
