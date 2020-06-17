@@ -136,16 +136,16 @@ public class MainActivity extends AppCompatActivity {
                 String total = unoffObject.getString("total"), recovered = unoffObject.getString("recovered"), active = unoffObject.getString("active"), deaths = unoffObject.getString("deaths");
 
                 confirmed_cases.setText(total);
-                confirmed_cases.setTextColor(Color.RED);
+             //   confirmed_cases.setTextColor(Color.RED);
 
                 recovered_cases.setText(recovered);
-                recovered_cases.setTextColor(Color.GREEN);
+            //    recovered_cases.setTextColor(Color.GREEN);
 
                 active_cases.setText(active);
-                active_cases.setTextColor(Color.YELLOW);
+            //    active_cases.setTextColor(Color.YELLOW);
 
                 death_s.setText(deaths);
-                death_s.setTextColor(Color.DKGRAY);
+            //    death_s.setTextColor(Color.DKGRAY);
 
                 JSONArray regional = data.getJSONArray("regional"); // sorry for the extremely cluttered code, but that's how the JSON file is.
 
