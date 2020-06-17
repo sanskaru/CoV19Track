@@ -3,6 +3,7 @@ package com.s090.cov19track;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.graphics.Color;
@@ -12,8 +13,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -40,12 +45,14 @@ public class MainActivity extends AppCompatActivity {
     TextView confirmed_cases, active_cases, death_s, recovered_cases;
     Fragment fragment;
     public static ArrayAdapter<String> stringArrayAdapter;
+    public static String[] totalConfirmed = new String[35], loc = new String[35], discharged = new String[35], deaths = new String[35];
     public void AddToList(JSONArray array)
     {
 
-        listView = (ListView) findViewById(R.id.listView);
-
+      //  listView = (ListView) findViewById(R.id.listView);
+        LinearLayout statesView = (LinearLayout) findViewById(R.id.statesView);
         ArrayList<String> list = new ArrayList<String>();
+        int id=Integer.MIN_VALUE;
 
         for(int i=0;i<array.length();i++)
         {
@@ -54,9 +61,12 @@ public class MainActivity extends AppCompatActivity {
             {
                 JSONObject state= array.getJSONObject(i);
 
-                String totalConfirmed = state.getString("totalConfirmed"), loc = state.getString("loc"), discharged = state.getString("discharged"), deaths = state.getString("deaths");
+                totalConfirmed[i] = state.getString("totalConfirmed");
+                loc[i] = state.getString("loc");
+                discharged[i] = state.getString("discharged");
+                deaths[i] = state.getString("deaths");
 
-                list.add("State: "+loc+"\n"+"Total: "+totalConfirmed+"\n"+"Recovered: "+discharged+"\n"+"Deaths: "+deaths);
+
 
             }
 
@@ -73,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, list);
         stringArrayAdapter = adapter;
-       listView.setAdapter(adapter);
+   //    listView.setAdapter(adapter);
 
     }
 
