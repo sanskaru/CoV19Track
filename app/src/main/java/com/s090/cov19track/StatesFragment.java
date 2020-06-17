@@ -1,31 +1,21 @@
 package com.s090.cov19track;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static com.s090.cov19track.MainActivity.deaths;
 import static com.s090.cov19track.MainActivity.discharged;
 import static com.s090.cov19track.MainActivity.loc;
-import static com.s090.cov19track.MainActivity.stringArrayAdapter;
 import static com.s090.cov19track.MainActivity.totalConfirmed;
-import static java.util.Arrays.asList;
 
 
 public class StatesFragment extends Fragment

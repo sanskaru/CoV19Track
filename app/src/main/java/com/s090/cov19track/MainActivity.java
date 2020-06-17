@@ -1,25 +1,17 @@
 package com.s090.cov19track;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
-
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -27,32 +19,22 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-
-import static java.security.AccessController.getContext;
-import static java.util.Arrays.asList;
 
 public class MainActivity extends AppCompatActivity {
 
-   static ListView listView;
-//    static TextView textView;
+
     TextView confirmed_cases, active_cases, death_s, recovered_cases;
     Fragment fragment;
     public static ArrayAdapter<String> stringArrayAdapter;
     public static String[] totalConfirmed = new String[35], loc = new String[35], discharged = new String[35], deaths = new String[35];
     public void AddToList(JSONArray array)
     {
-        int id=Integer.MIN_VALUE;
-
         for(int i=0;i<array.length();i++)
         {
-
             try
             {
                 JSONObject state= array.getJSONObject(i);
@@ -74,9 +56,6 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-
-
-
     }
 
     public class CallToAPI extends AsyncTask<String, Void, String>
@@ -105,7 +84,10 @@ public class MainActivity extends AppCompatActivity {
             catch (Exception e)
             {
                 e.printStackTrace();
+
+
             }
+
             return "F";
         }
 
@@ -121,7 +103,6 @@ public class MainActivity extends AppCompatActivity {
 
                 JSONObject data = apiContent.getJSONObject("data");
 
-                String unofficial = data.getString("unofficial-summary");
                 JSONArray unoffArray = data.getJSONArray("unofficial-summary");
 
                 JSONObject unoffObject = unoffArray.getJSONObject(0);
@@ -143,9 +124,7 @@ public class MainActivity extends AppCompatActivity {
 
                 JSONArray regional = data.getJSONArray("regional"); // sorry for the extremely cluttered code, but that's how the JSON file is.
 
-                AddToList(regional);
-
-                // regional array contains statewise data in alphabetical order
+                AddToList(regional); // regional array contains statewise data in alphabetical order
 
             }
 
@@ -173,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
         navbar.setOnNavigationItemSelectedListener(listener);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, new HomeFragment()).commit();
+
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener listener = new BottomNavigationView.OnNavigationItemSelectedListener() {
