@@ -4,7 +4,8 @@ A COVID19 tracker with all-India and statewise stats with a minimalistic UI.
 
 ## Changelog
 
-* Version 1.0 (15th May): Initial Commit
+* Version 0.1.0 (18th May, 2020): First Stable build, redesigned UI, new color scheme, APK now available.
+* Version 1.0 (15th May, 2020): Initial Commit
 
 ## Getting Started
 
