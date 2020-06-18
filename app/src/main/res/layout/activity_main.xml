@@ -22,7 +22,7 @@
         android:id="@+id/navbar"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#ffffff"
+        android:background="#ffffea"
         app:menu="@menu/tab_menu"/>
 
 </RelativeLayout>
