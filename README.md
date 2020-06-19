@@ -2,6 +2,10 @@
 
 A COVID19 tracker with all-India and statewise stats with a minimalistic UI.
 
+## Demo Image
+
+![Image of the app](https://raw.githubusercontent.com/sanskaru/CoV19Track/master/covi.jpg)
+
 ## Changelog
 
 * Version 0.1.1 (20th June, 2020): Various UI optimisations and bugfixes, app icon added.
