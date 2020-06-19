@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">CoV19Track</string>
     <string name="devs">Developed by <a href="https://github.com/sanskaru">090</a> | <a href="https://github.com/TheDevByte">TheDevByte</a></string>
-    <string name="sources">Data Source: <a href="https://github.com/amodm/api-covid19-in">Amodm\'s COVID19 API</a></string>
+    <string name="sources">Data Source:\n<a href="https://github.com/amodm/api-covid19-in">COVID19 API by Amod Malaviya</a></string>
 </resources>
