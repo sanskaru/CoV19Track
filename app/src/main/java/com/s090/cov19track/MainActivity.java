@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -23,6 +24,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -96,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             Log.i("API Content", s);
+            if(s=="F") Toast.makeText(getApplicationContext(), "An error occured. Please check your internet connection.", Toast.LENGTH_LONG).show();
             try
             {
 
@@ -182,7 +185,6 @@ public class MainActivity extends AppCompatActivity {
 
             CallToAPI call=new CallToAPI();
             call.execute("https://api.rootnet.in/covid19-in/stats/latest");
-
             return true;
         }
     };
