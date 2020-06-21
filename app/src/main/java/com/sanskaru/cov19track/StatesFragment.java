@@ -1,4 +1,4 @@
-package com.s090.cov19track;
+package com.sanskaru.cov19track;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -12,10 +12,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import static com.s090.cov19track.MainActivity.deaths;
-import static com.s090.cov19track.MainActivity.discharged;
-import static com.s090.cov19track.MainActivity.loc;
-import static com.s090.cov19track.MainActivity.totalConfirmed;
+import static com.sanskaru.cov19track.MainActivity.deaths;
+import static com.sanskaru.cov19track.MainActivity.discharged;
+import static com.sanskaru.cov19track.MainActivity.loc;
+import static com.sanskaru.cov19track.MainActivity.totalConfirmed;
 
 
 public class StatesFragment extends Fragment
@@ -53,4 +53,6 @@ public class StatesFragment extends Fragment
         statesView.animate().alpha(1).translationYBy(-2000f).setDuration(750);
         return myView;
     }
+
+
 }

@@ -1,4 +1,4 @@
-package com.s090.cov19track;
+package com.sanskaru.cov19track;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
