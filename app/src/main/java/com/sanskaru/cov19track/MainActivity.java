@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
+
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView confirmed_cases, active_cases, death_s, recovered_cases;
     Fragment fragment;
-    public static ArrayAdapter<String> stringArrayAdapter;
+
     public static String[] totalConfirmed = new String[35], loc = new String[35], discharged = new String[35], deaths = new String[35];
     public void AddToList(JSONArray array)
     {
