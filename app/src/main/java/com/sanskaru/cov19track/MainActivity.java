@@ -16,6 +16,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView confirmed_cases, active_cases, death_s, recovered_cases;
     Fragment fragment;
+
 
     public static String[] totalConfirmed = new String[35], loc = new String[35], discharged = new String[35], deaths = new String[35];
     public void AddToList(JSONArray array)
