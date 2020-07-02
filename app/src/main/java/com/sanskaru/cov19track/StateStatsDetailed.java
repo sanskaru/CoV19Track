@@ -23,13 +23,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 
-import static com.sanskaru.cov19track.MainActivity.deaths;
-import static com.sanskaru.cov19track.MainActivity.discharged;
-import static com.sanskaru.cov19track.MainActivity.loc;
-import static com.sanskaru.cov19track.MainActivity.totalConfirmed;
 
 public class StateStatsDetailed extends AppCompatActivity
 {
@@ -58,6 +52,8 @@ public class StateStatsDetailed extends AppCompatActivity
                     data=reader.read();
                 }
                 return result;
+
+
 
             }
             catch (Exception e)
