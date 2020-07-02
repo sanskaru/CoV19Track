@@ -30,7 +30,7 @@ public class StateStatsDetailed extends AppCompatActivity
 
     String stateName = "Null";
     TextView stateStatsView;
-    JSONArray total, distObj;
+
     public class CallToAPIStates extends AsyncTask<String, Void, String>
     {
 
