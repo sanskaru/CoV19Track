@@ -8,6 +8,10 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,12 +26,17 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.sanskaru.cov19track.MainActivity.deaths;
+import static com.sanskaru.cov19track.MainActivity.discharged;
+import static com.sanskaru.cov19track.MainActivity.loc;
+import static com.sanskaru.cov19track.MainActivity.totalConfirmed;
+
 public class StateStatsDetailed extends AppCompatActivity
 {
 
     String stateName = "Null";
     TextView stateStatsView;
-
+    JSONArray total, distObj;
     public class CallToAPIStates extends AsyncTask<String, Void, String>
     {
 
@@ -84,9 +93,53 @@ public class StateStatsDetailed extends AppCompatActivity
                 Log.i("Selected state", stateAPI.toString());
                 Log.i("This.Districts", distObj.toString());
 
-                for(int i=0; i < districts.length(); i++) Log.i("Iski maakabhosda Array "+i, districts.get(i).toString());
+                String[] distNames = new String[distObj.names().length() + 1];
+                for(int i=0; i < distObj.names().length(); i++)
+                    distNames[i]=(String) distObj.names().get(i).toString();
 
-                Log.i("Districts maakabhosda",distObj.names().toString());
+                for(int i=0; i < districts.length(); i++) Log.i("Districts "+i, districts.get(i).toString());
+
+                Log.i("District names",distObj.names().toString());
+
+                stateStatsView.setVisibility(View.INVISIBLE);
+
+                LinearLayout stats_viewgroup = (LinearLayout) findViewById(R.id.stats_viewgroup);
+                LayoutInflater inflater = LayoutInflater.from(stats_viewgroup.getContext());
+
+                for(int i = 0; i < districts.length(); i++)
+                {
+                    LinearLayout viewGroup = new LinearLayout(getApplicationContext());
+                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 200);
+                    params.topMargin = 10;
+                    params.bottomMargin=10;
+                    params.leftMargin=10;
+                    params.rightMargin=10;
+                    viewGroup.setLayoutParams(params);
+
+                    View view = inflater.inflate(R.layout.state_view, viewGroup, false);
+
+                    JSONObject object = districts.getJSONObject(i);
+                    JSONObject objectification = object.getJSONObject("total");
+                    Log.i("Objectification of object "+i, objectification.toString());
+
+                    String deaths = "0", recovered = "0" , confirmed = "0", name = "0";
+
+                    if(objectification.has("deaths")) deaths = objectification.getString("deaths");
+                    if(objectification.has("confirmed")) confirmed = objectification.getString("confirmed");
+                    if(objectification.has("recovered")) recovered = objectification.getString("recovered");
+
+                    Log.i("MKBHD", deaths+" "+recovered+" "+confirmed + " "+name);
+
+                    ((TextView) view.findViewById(R.id.card_deaths)).setText("Deaths: "+deaths);
+                    ((TextView) view.findViewById(R.id.card_recovered)).setText("Recovered: "+recovered);
+                    ((TextView) view.findViewById(R.id.card_total)).setText("Confirmed: "+confirmed);
+                    ((TextView) view.findViewById(R.id.card_title)).setText(distObj.names().get(i).toString());
+
+                    stats_viewgroup.addView(view);
+
+                }
+                stats_viewgroup.setAlpha(0f);
+                stats_viewgroup.animate().alpha(1f).setDuration(500);
 
             }
             catch (JSONException e)
@@ -157,19 +210,10 @@ public class StateStatsDetailed extends AppCompatActivity
         TextView statenameView = (TextView) findViewById(R.id.statenameView);
         statenameView.setText(s);
 
-
-
-
         stateStatsView = (TextView) findViewById(R.id.stateStatsView);
 
         CallToAPIStates callToAPIStates = new CallToAPIStates();
         callToAPIStates.execute("https://api.covid19india.org/v3/min/data.min.json");
-
-
-
-
-
-
 
 
     }
